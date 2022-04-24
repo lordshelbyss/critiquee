@@ -3,13 +3,14 @@ const app=express();
 const mongoose=require('mongoose');
 const cookieSession=require('cookie-session');
 const passport=require('passport');
+const keys=require('./config/keys');
 
-mongoose.connect(require('./config/keys').mongoURI);
+mongoose.connect(keys.mongoURI);
 require('./model/User');
 
 
 app.use(cookieSession({
-    keys:[require('./config/keys').sessionKey],
+    keys:[keys.sessionKey],
     maxAge: 24*60*60*1000
 }));
 
