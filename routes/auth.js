@@ -13,12 +13,17 @@ module.exports = (app) => {
     "/auth/google/callback",
     passport.authenticate("google"),
     (req, res) => {
-      res.redirect("/");
+      res.redirect("/surveys");
     }
   );
 
   // test route for session being stored on the request 
   app.get('/api/user',(req,res)=>{
-    res.send(req.session);
+    res.send(req.user);
+  });
+
+  app.get('/auth/logout',(req,res)=>{
+    req.logOut();
+    res.redirect('/');
   })
 };
