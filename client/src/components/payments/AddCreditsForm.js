@@ -17,7 +17,7 @@ const AddCreditsForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="addCreditsForm" onSubmit={handleSubmit}>
       <div>
         <Field
           name="credits"

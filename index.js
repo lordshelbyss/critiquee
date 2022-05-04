@@ -7,6 +7,7 @@ const keys=require('./config/keys');
 
 mongoose.connect(keys.mongoURI);
 require('./model/User');
+require('./model/Survey');
 
 
 app.use(cookieSession({
@@ -20,6 +21,7 @@ app.use(express.json());
  
 require('./routes/auth')(app);
 require('./routes/payments')(app);
+require('./routes/survey')(app);
 
 // For production 
 if(process.env.NODE_ENV==='production'){
