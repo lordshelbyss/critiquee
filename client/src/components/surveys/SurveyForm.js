@@ -51,12 +51,12 @@ const validate=(values)=>{
 
     // Empty field validation 
     // Array.map() function has to always return something 
-   _.map(formFields,({name})=>{
+  //  _.map(formFields,({name})=>{
 
-        if(!values[name]){
-            errors[name]= `${name} should be present`;
-        }
-    });
+  //       if(!values[name]){
+  //           errors[name]= `${name} should be present`;
+  //       }
+  //   });
 
     // Email validation 
     // Getting errors here !!

@@ -26,4 +26,19 @@ export const associateCreditsWithUser=(credits)=>{
         });
         dispatch({type:"FETCH_USER",payload:response.data});
     }
-}
+};
+
+export const changeSurveyInReview=(inReview)=>{
+    return {
+        type: "CHANGE_INREVIEW",
+        payload: inReview
+    };
+    
+};
+
+export const saveSurvey=(formValues)=>{
+    return async (dispatch)=>{
+        const response=await axios.post('/api/survey/create',formValues);
+        dispatch({type:"FETCH_USER",payload:response.data});
+    }
+};

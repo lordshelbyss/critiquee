@@ -18,7 +18,7 @@ const SurveyReview = ({ onBackClick, onSubmitClick,values}) => {
     <div>
       {renderReviewFields()}
       <a
-        onClick={onSubmitClick}
+        onClick={()=>onSubmitClick(values)}
         className="waves-effect waves-light btn-large right"
       >
         Submit

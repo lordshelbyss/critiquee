@@ -3,30 +3,36 @@
 
 import { useState } from "react";
 import { reduxForm } from "redux-form";
+import { connect } from "react-redux";
 import SurveyForm from "./SurveyForm";
-import SurveyReview from './SurveyReview';
+import SurveyReview from "./SurveyReview";
+import { saveSurvey } from "../../actions";
+import { changeSurveyInReview } from "../../actions";
 
 const SurveyNew = (props) => {
-  const [inReview, setInReview] = useState(false);
 
   const onCancelClick = () => {
     props.history.push("/surveys");
   };
 
   const onNextClick = () => {
-    setInReview(true);
+    props.changeSurveyInReview(true);
   };
 
-  const onBackClick=()=>{
-    setInReview(false);
+  const onBackClick = () => {
+    props.changeSurveyInReview(false);
   };
 
-  const onSubmitClick=()=>{
+  const onSubmitClick = (values) => {
+    console.log("values are ",values);
 
+    // call action creator
+    props.saveSurvey(values);
+    props.history.push("/surveys");
   };
 
   const renderFormPage = () => {
-    if (inReview) {
+    if (props.inReview) {
       return (
         <SurveyReview onBackClick={onBackClick} onSubmitClick={onSubmitClick} />
       );
@@ -38,8 +44,17 @@ const SurveyNew = (props) => {
   return <div>{renderFormPage()}</div>;
 };
 
+const mapStateToProps = (state) => {
+  return {
+    inReview: state.surveyFormInReview,
+    
+  };
+};
+
 // very important trick to wrap this with reduxForm, sets destroyOnUnmount to true if
-// we navigate to any component not under SurveyNew 
-export default reduxForm({
-    form: "surveyForm"
-})(SurveyNew);
+// we navigate to any component not under SurveyNew
+export default connect(mapStateToProps, { saveSurvey,changeSurveyInReview })(
+  reduxForm({
+    form: "surveyForm",
+  })(SurveyNew)
+);

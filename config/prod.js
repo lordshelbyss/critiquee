@@ -5,5 +5,8 @@ module.exports={
     sessionKey: process.env.SESSION_KEY,
     stripeSecretKey: process.env.STRIPE_SECRET_KEY,
     sendGridAPIKey: process.env.SENDGRID_API_KEY,
+    mailjetPublicKey: process.env.MAILJET_PUBLIC_KEY,
+    mailjetPrivateKey: process.env.MAILJET_PRIVATE_KEY,
+    domainName: process.env.DOMAIN_NAME,
 };
 

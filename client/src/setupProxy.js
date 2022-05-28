@@ -5,7 +5,7 @@ const {createProxyMiddleware} =require('http-proxy-middleware');
 module.exports=function(app){
 
     // added proxy for adding credits
-    app.use(["/api","/auth", "/api/create-payment-intent","/api/user/add-credits"],createProxyMiddleware({
+    app.use(["/api/*","/auth/*"],createProxyMiddleware({
         target: "http://localhost:5000"
     }));
 };
